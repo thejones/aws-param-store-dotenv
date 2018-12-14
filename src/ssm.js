@@ -2,10 +2,10 @@ const assert = require('assert');
 const awsParamStore = require('aws-param-store');
 const has = require('lodash.has');
 
-const getAWSParams = (ssmPath) => {
+const getAWSParams = (ssmPath, region) => {
   assert(ssmPath, 'ssmPath must be provided.');
   return awsParamStore
-    .getParametersByPath(ssmPath, { region: 'us-east-2' });
+    .getParametersByPathSync(ssmPath, { region });
 };
 
 

@@ -23,7 +23,6 @@
   "dependencies": {
     "aws-param-store": "^2.1.0",
     "aws-sdk": "^2.375.0",
-    "lodash.includes": "^4.3.0",
     "lodash.has": "^4.5.2"
   },
   "devDependencies": {

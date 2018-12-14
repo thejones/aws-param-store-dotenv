@@ -1,12 +1,8 @@
-const assert = require('assert');
 const awsParamStore = require('aws-param-store');
 const has = require('lodash.has');
 
-const getAWSParams = (ssmPath, region) => {
-  assert(ssmPath, 'ssmPath must be provided.');
-  return awsParamStore
-    .getParametersByPathSync(ssmPath, { region });
-};
+const getAWSParams = options => awsParamStore
+  .getParametersByPathSync(options.ssmPath, { region: options.region });
 
 
 const setProcessEnv = (inputArray) => {

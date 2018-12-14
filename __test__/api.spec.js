@@ -5,46 +5,35 @@ const { expect } = chai;
 const nutrienSSM = require('../src/index');
 
 describe('nutrienSSM', () => {
-  it('Requires a search path', async () => {
+  it('Requires a search path', () => {
     try {
-      await nutrienSSM();
+      nutrienSSM();
     } catch (err) {
       expect(err.message).to.equal('Options must be an Object');
     }
   });
 
-  it('Requires an ssmPath', async () => {
+  it('Requires an ssmPath', () => {
     try {
-      await nutrienSSM({ EB_ENV: 'DEV' });
+      nutrienSSM({ region: 'region' });
     } catch (err) {
       expect(err.message).to.equal('ssmPath must be provided.');
     }
   });
 
-  it('Requires an EB_ENV', async () => {
+  it('Requires an AWS region', () => {
     try {
-      await nutrienSSM({ ssmPath: '/path/' });
+      nutrienSSM({ ssmPath: '/path/' });
     } catch (err) {
-      expect(err.message).to.equal('EB_ENV must be provided.');
+      expect(err.message).to.equal('AWS region must be provided.');
     }
   });
 
-  it('Requires a correct value for EB_ENV', async () => {
-    try {
-      await nutrienSSM({
-        ssmPath: '/path/',
-        EB_ENV: 'bad_value',
-      });
-    } catch (err) {
-      expect(err.message.startsWith('Value must be one of')).to.be.true;
-    }
-  });
-
-  it('Works as expected', async () => {
+  it('Works as expected', () => {
     const startLength = Object.keys(process.env).length;
-    await await nutrienSSM({
+    nutrienSSM({
       ssmPath: '/nutrien/',
-      EB_ENV: 'DEV',
+      region: 'us-east-2',
     });
 
     expect(Object.keys(process.env).length).to.be.above(startLength);

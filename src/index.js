@@ -7,8 +7,8 @@ module.exports = (options) => {
   assert(options.ssmPath, 'ssmPath must be provided.');
   assert(options.region, 'AWS region must be provided.');
 
-  const params = getAWSParams(options.ssmPath, options.region);
-  if (params.length) {
+  const params = getAWSParams(options);
+  if (params) {
     setProcessEnv(params);
   }
 };

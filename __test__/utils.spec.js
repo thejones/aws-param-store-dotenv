@@ -28,4 +28,17 @@ describe('Get Params from AWS', () => {
     setProcessEnv(mockParams);
     expect(Object.keys(process.env).length).to.be.above(startLength);
   });
+
+  it('Does not overwrite process env variables', () => {
+    const keyString = 'The one true key.';
+    process.env.SECOND_MASTER_KEY = keyString;
+    const mockParams = [
+      {
+        Name: '/awesome/api/staging/SECOND_MASTER_KEY',
+        Value: 'Jay-Z',
+      },
+    ];
+    setProcessEnv(mockParams);
+    expect(process.env.SECOND_MASTER_KEY).to.equal(keyString);
+  });
 });

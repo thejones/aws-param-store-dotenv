@@ -1,7 +1,7 @@
 {
   "name": "nutrien-ssm",
   "version": "1.0.0",
-  "description": "",
+  "description": "This project gets and sets process.env variables for a node.js project from AWS SSM params.",
   "main": "src/index.js",
   "scripts": {
     "test": "NODE_ENV=test npx mocha ./__test__/*.spec.js --recursive --timeout 30000"

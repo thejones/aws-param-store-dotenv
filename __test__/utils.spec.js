@@ -7,7 +7,7 @@ const { getAWSParams, setProcessEnv } = require('../src/ssm.js');
 describe('Get Params from AWS', () => {
   it('Fetches params from AWS correctly given a path', () => {
     const params = getAWSParams({
-      ssmPath: '/nutrien/',
+      ssmPath: '/Provide A Vaild Path Here/',
       region: 'us-east-2',
     });
     expect(params).to.be.an('array');

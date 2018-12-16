@@ -1,7 +1,7 @@
 {
-  "name": "nutrien-ssm",
+  "name": "aws-param-store-dotenv",
   "version": "1.0.0",
-  "description": "This project gets and sets process.env variables for a node.js project from AWS SSM params.",
+  "description": "This project gets and sets process.env variables for a node.js project from AWS SSM param store.",
   "main": "src/index.js",
   "scripts": {
     "test": "NODE_ENV=test npx mocha ./__test__/*.spec.js --recursive --timeout 30000"

@@ -2,12 +2,12 @@ const chai = require('chai');
 
 const { expect } = chai;
 
-const nutrienSSM = require('../src/index');
+const awsParamStoreEnv = require('../src/index');
 
-describe('nutrienSSM', () => {
+describe('awsParamStoreEnv', () => {
   it('Requires a search path', () => {
     try {
-      nutrienSSM();
+      awsParamStoreEnv();
     } catch (err) {
       expect(err.message).to.equal('Options must be an Object');
     }
@@ -15,7 +15,7 @@ describe('nutrienSSM', () => {
 
   it('Requires an ssmPath', () => {
     try {
-      nutrienSSM({ region: 'region' });
+      awsParamStoreEnv({ region: 'region' });
     } catch (err) {
       expect(err.message).to.equal('ssmPath must be provided.');
     }
@@ -23,7 +23,7 @@ describe('nutrienSSM', () => {
 
   it('Requires an AWS region', () => {
     try {
-      nutrienSSM({ ssmPath: '/path/' });
+      awsParamStoreEnv({ ssmPath: '/path/' });
     } catch (err) {
       expect(err.message).to.equal('AWS region must be provided.');
     }
@@ -31,8 +31,8 @@ describe('nutrienSSM', () => {
 
   it('Works as expected', () => {
     const startLength = Object.keys(process.env).length;
-    nutrienSSM({
-      ssmPath: '/nutrien/',
+    awsParamStoreEnv({
+      ssmPath: '/Provide a Valid Path Here/',
       region: 'us-east-2',
     });
 
